@@ -1,0 +1,83 @@
+<!--TWIST PONG CODE-->
+<!--Writen by Pedro Pasquali--1#Project IronHack WDPT50-SP-->
+<!--Code Diary:
+20.06 - create file
+21.06 - adding super basic content(static)
+22.06 - More content. trying snap scroll. nok for now. will leave as is and go to JS.
+
+-->
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Twist-Pong</title>
+    <link rel="stylesheet" href="./style/style.css" />
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Staatliches&family=VT323&display=swap" rel="stylesheet">
+
+    <style>
+    @import url('https://fonts.googleapis.com/css2?family=Playfair+Display&family=Staatliches&family=VT323&display=swap');
+    </style>
+</head>
+<body>
+    <div class="container"> <!--work-around compabilities issues regarding scroll-snap in Safari and Chrome-->
+    <!--WELCOME--> 
+        <!-- <section id="welcomePage">
+            <h1 class="serifFont">Twist</h1>
+            <h2 class="pixelFont">Pong</h2>
+            <p id="smallIntro">a classic,<br>with a humble twist.<br>enjoy ;)</p>
+            <img src="./IMGrepo/downArrow.png" alt="arrow down"/>
+            <p class="scrollSignals">get ready</p>
+        </section>
+        <hr> -->
+    <!--GAME FORPLAY-->        
+        <!-- <section id="preGame">
+            <div id="choosePlayer">
+                <h1>1.Choose your player color</h1>
+                <img src="./IMGrepo/palete.png" alt="choose player color"/>
+                <button><a>Clockwork Orange</a></button>
+                <button>Blue Lagoon</button>
+                <button>Adidas White</button>
+            </div>
+            <div id="chooseScore">
+                <h1>2.Choose the score limit</h1>
+                <img src="./IMGrepo/limit.png" alt="choose score limit"/>
+                <button>10</button>
+            </div>
+            <div id="explainControls">
+                <h1>3.Controls</h1>
+                <img src="./IMGrepo/controls.png" alt="controls"/>
+            </div>
+            <img src="./IMGrepo/play.png" alt="controls"/>
+            <p class="scrollSignals">let´s play!</p>
+        </section>
+        <hr> -->
+    <!--GAME HERE!-->    
+        <section id="gameGame">
+            <div id="p01">
+            <h2>PLAYER<span> 01</span></h2>
+            <h2>SCORE<span> 00</span></h2>
+            </div>
+            <!--CANVAS HERE!-->    
+            <canvas id="canvas" width="1300" height="850"></canvas>
+            <div>
+            <h2 id="p02">PLAYER<span> 02</span></h2>
+            <h2><span>00 </span>SCORE</h2>
+            </div>
+        </section>
+        <hr>
+    <!--ABOUT HERE!-->    
+        <!-- <section id="genInfo">
+            <img src="./IMGrepo/infos.png" alt="about"/>
+            <img src="./IMGrepo/person.png" alt="author"/>
+            <img src="./IMGrepo/email.png" alt="contact via email"/>
+        </section> -->
+    <!--SCRIPTS GO HERE BELLOW-->
+        <script src="./js/twistPongDynamics.js"></script>
+    </div>
+</body>
+</html>
+
+    

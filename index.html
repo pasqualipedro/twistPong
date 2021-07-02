@@ -27,19 +27,26 @@
          <!-- <section id="welcomePage">
             <h1 class="serifFont">Twist</h1>
             <h2 class="pixelFont">Pong</h2>
-            <p id="smallIntro">a classic,<br>with a humble twist.<br>enjoy ;)</p>
+            <p id="smallIntro">a classic,<br>with a humble twist.<br>enjoy it ;)</p>
             <img src="./IMGrepo/downArrow.png" alt="arrow down"/>
-            <p class="scrollSignals">get ready</p>
+            <p class="scrollSignals">get ready<br>scroll down</p>
         </section>
         <hr> -->
     <!--GAME FORPLAY-->        
         <!-- <section id="preGame">
-            <div id="choosePlayer">
-                <h1>1.Choose your player color</h1>
-                <img src="./IMGrepo/palete.png" alt="choose player color"/>
-                <button><a>Clockwork Orange</a></button>
-                <button>Blue Lagoon</button>
-                <button>Adidas White</button>
+            <div id="choosePlayers">
+                <div id="choosePlayer1">
+                    <h1>Player 1,<br>choose your color</h1>
+                    <button><a>Clockwork Orange</a></button>
+                    <button>Blue Lagoon</button>
+                    <button>Adidas White</button>
+                </div>
+                <div id="choosePlayer2">
+                    <h1>Player 2,<br>choose your color</h1>
+                    <button><a>Clockwork Orange</a></button>
+                    <button>Blue Lagoon</button>
+                    <button>Adidas White</button>
+                </div>
             </div>
             <div id="chooseScore">
                 <h1>2.Choose the score limit</h1>
@@ -59,9 +66,11 @@
             <div id="p01">
             <h2>PLAYER<span> 01</span></h2>
             <h2>SCORE<span> 00</span></h2>
+            <button id="startGameBtn"><a>START!</a></button>
             </div>
             <!--CANVAS HERE!-->
             <div id="canvasDiv">
+                <canvas id="canvas" width="1300" height="850"></canvas>
             </div>
             <div>
             <h2 id="p02">PLAYER<span> 02</span></h2>
@@ -76,8 +85,7 @@
             <img src="./IMGrepo/email.png" alt="contact via email"/>
         </section> -->
     <!--SCRIPTS GO HERE BELLOW-->
-        <!-- <script src="./js/twistPongDynamics.js"></script> -->~
-        <script src="./js/twistPongDynamics.js"></script>
+        <script src="./js/twistPongDynamics0106.js"></script>
     </div>
 </body>
 </html>

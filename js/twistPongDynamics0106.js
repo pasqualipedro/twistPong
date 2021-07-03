@@ -25,41 +25,39 @@ const gameCanvas = {
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
         this.ctx.closePath();
     },
-
-    // stop: function () {
-
-    // }
 };
 
+// --> convert degrees to radians - to facilitate understanding
 function degreesToRad(degrees) {
     const pi = Math.PI; // Math.PI
     return degrees * (pi / 180);
 };
 
+// --> convert radians to degrees - to facilitate understanding
 function radToDegrees(rad) {
     return rad * 57.295779513;
-}
+};
 
-
-// pick random angle between values. not included. - maybe it wont work.
+// --> pick random angle between values. NOT IN USE
 function getRandAngle(min, max) {
     return (Math.random() * (max - min) + min);
 };
-//console.log(getRandAngle(degreesToRad(130), degreesToRad(270)))
 
+// --> pick random Y point in the middleLine of battlefield. results in an angle of reflection after collision
 function randomPointbetweenYs() {
     const Ystart = Math.ceil(gameCanvas.canvasHeight / 2 - ballTravelRadius);
     const Yend = Math.floor(gameCanvas.canvasHeight / 2 + ballTravelRadius);
     return Math.floor(Math.random() * (Yend - Ystart)) + Ystart;
 };
-// console.log(randomPointbetweenYs())
 
+// --> we get an angle given the 2 sides on right-triangle
 function haveSidesWantAngleInRad(adjacentSide, oppositeSide) {
     return Math.atan(oppositeSide / adjacentSide);
 };
-// console.log(haveSidesWantAngleInRad(4, 4));
 
-// BALL
+
+
+//  BALL
 class Ball {
     constructor(x, y, color) {
         this.x = x;
@@ -67,7 +65,7 @@ class Ball {
         this.r = 15;
         this.color = color;
         this.angle = 180;
-        this.pace = 2;
+        this.pace = 1;
     };
 
     left() {
@@ -97,24 +95,11 @@ class Ball {
         gameCanvas.ctx.closePath();
     };
 
-    //-----SAFE COPY FOR MESSIGN BELLOW - 03.07.21
-    // moveBall() {
-    //     this.x += this.pace * Math.cos(degreesToRad(this.angle));
-    //     this.y += this.pace * Math.sin(degreesToRad(this.angle));
-    //     if (this.left() < player1.right()) { //-test to check collision between ball vs player1
-    //         this.angle -= 1;
-    //         // this.angle = Math.random() * 
-    //     }; 
-    //     if (this.right() > player2.left()) {
-        //         this.angle += 180;
-        //     };
-        // };
-
     moveBall() {
         this.x += this.pace * Math.cos(degreesToRad(this.angle));
         this.y += this.pace * Math.sin(degreesToRad(this.angle));
     };
-    
+
     checkCollBallP1() {
         let xDistBallP1 = this.x - player1.x;
         let yDistBallP1 = player1.y - this.y;
@@ -133,13 +118,11 @@ class Ball {
     checkCollBallP2() {
         let xDistBallP2 = player2.x - this.x;
         let yDistBallP2 = player2.y - this.y;
-        //
+
         let totalDistBallP2 = Math.sqrt(Math.pow(xDistBallP2, 2) + Math.pow(yDistBallP2, 2));
-        // console.log(`distance to P2 ${totalDistBallP2}`);
 
         if (totalDistBallP2 < ball.r + player2.r) {
-            console.log(`Ball collided with P2`)
-            // this.angle = -180;
+            console.log(`Ball collided with P2`);
             return true
         }
         return false;
@@ -151,9 +134,6 @@ class Ball {
             let differX = this.x - gameCanvas.canvasWidth / 2;
             let differY = this.y - randomPointbetweenYs();
             this.angle = radToDegrees(haveSidesWantAngleInRad(differX, differY));
-        // if (differY < 0){
-        //     this.angle = radToDegrees(haveSidesWantAngleInRad(differX, (differY * -1)));
-        // };
         };
 
         if (direction === `right`) {
@@ -161,59 +141,9 @@ class Ball {
             let differX = - this.x - gameCanvas.canvasWidth / 2;
             let differY = this.y - randomPointbetweenYs();
             this.angle = 180 - radToDegrees(haveSidesWantAngleInRad(differX, differY));
-            console.log(this.angle);
-        //     let differX = this.x - gameCanvas.canvasWidth / 2;
-        //     let differY = this.y - randomPointbetweenYs();
-        //     console.log(`change angle here for P2`);
-        // if (differY < 0){
-        //     this.angle = haveSidesWantAngleInRad(differX, (differY * -1));
-        // };
-        //     this.angle = haveSidesWantAngleInRad(differX, differY);
-        }
-    };
-
-};                              
-        /* if (this.left() <= player1.right()) { //-test to check collision between ball vs player1
-            console.log(`CollisionP1`);
-            this.angle -= 1;
-            // let xAtmOfCol = this.x;
-            // let yAtmOfCol = this.y;
-            // let differX = gameCanvas.canvasWidth / 2 - xAtmOfCol;
-            // let differY = yAtmOfCol - randomPointbetweenYs();
-            // this.angle = haveSidesWantAngleInRad(differX, differY);
-            // this.x += Math.cos(this.angle);
-            // this.y += Math.sin(this.angle);
-            
-            // this.x = randomPointbetweenYs();
-            // this.y = randomPointbetweenYs();
-
-            console.log(xAtmOfCol);
-            console.log(yAtmOfCol);
-            console.log(differX);
-            console.log(differY);
-            console.log(haveSidesWantAngleInRad(differX, differY));
-        
-
-        if (this.right() >= player2.left()) {
-            console.log(`CollisionP2`);
-            this.angle += 180;
-            
-            this.x += this.pace * Math.cos(degreesToRad(180));
-            this.y += this.pace * Math.sin(degreesToRad(180));
-            // let xAtmOfCol = this.x;
-            // let yAtmOfCol = this.y;
-            // let differX = xAtmOfCol - gameCanvas.canvasWidth / 2;
-            // let differY = yAtmOfCol - randomPointbetweenYs();
-            // this.angle = degreesToRad(180) - haveSidesWantAngleInRad(differX, differY);
-            // this.x += Math.cos(this.angle);
-            // this.y += Math.sin(this.angle);
         };
-     */
-
-
-
-
-
+    };
+};
 
 //  CLASS player1 - LEFT
 class Player1 {
@@ -225,7 +155,7 @@ class Player1 {
         // this.h = h;
         this.color = color;
         this.angle = 180; //-- inserir em graus! - converte graus em radianos.
-        this.pace = 2; //--here, the speed pace   
+        this.pace = 2.5; //--here, the speed pace   
         this.score = 0;
     };
 
@@ -245,10 +175,6 @@ class Player1 {
         return this.y + this.r;
     };
 
-    // crashWith() {
-    //     return !(this.right() > ball.left() || this.bottom() > ball.top() || this.top() < ball.bottom());
-    // };
-
     drawPlayer() {
         gameCanvas.ctx.beginPath();
         gameCanvas.ctx.arc(this.x, this.y, playersGenRadius, 0, (2 * Math.PI), false);
@@ -258,36 +184,23 @@ class Player1 {
         gameCanvas.ctx.strokeStyle = `black`;
         gameCanvas.ctx.stroke();
         gameCanvas.ctx.closePath();
-
-        // gameCanvas.ctx.beginPath();
-        // gameCanvas.ctx.fillStyle = this.color;
-        // gameCanvas.ctx.fillRect(this.x, this.y, this.w, this.h);
-        // gameCanvas.ctx.closePath();  
-
     };
 
     moveUp() {
         this.angle -= this.pace;
-        console.log(this.angle)
-        if (this.angle >= 90) { // nao esta muito bem
-            this.x = gameCanvas.canvasWidth / 2 + (Math.cos(degreesToRad(this.angle)) * (fieldRadius) * +1);
-        };
+        this.x = gameCanvas.canvasWidth / 2 + (Math.cos(degreesToRad(this.angle)) * (fieldRadius) * +1);
         this.y = gameCanvas.canvasHeight / 2 + (Math.sin(degreesToRad(this.angle)) * (fieldRadius) * -1);
-
     };
 
     moveDown() {
         this.angle += this.pace;
-        console.log(this.angle)
-        if (this.angle <= 270) { // nao esta muito bem
-            this.x = gameCanvas.canvasWidth / 2 + (Math.cos(degreesToRad(this.angle)) * (fieldRadius) * +1);
-        };
+        this.x = gameCanvas.canvasWidth / 2 + (Math.cos(degreesToRad(this.angle)) * (fieldRadius) * +1);
         this.y = gameCanvas.canvasHeight / 2 + (Math.sin(degreesToRad(this.angle)) * (fieldRadius) * -1);
     };
 
-    score() {
-
-    }
+    printScore() {
+        document.getElementById(`p1scoreNumber`).innerText = this.score
+    };
 
 };
 
@@ -321,24 +234,22 @@ class Player2 extends Player1 {
         return this.y + this.r;
     };
 
-    crashWith() {
-        return !(this.left() > ball.right() || this.bottom() > ball.top() || this.top() < ball.bottom());
-    };
-
     moveUp() {
         this.angle += this.pace;
-        console.log(this.angle)
         this.x = gameCanvas.canvasWidth / 2 + (Math.cos(degreesToRad(this.angle)) * (fieldRadius) * +1);
         this.y = gameCanvas.canvasHeight / 2 + (Math.sin(degreesToRad(this.angle)) * (fieldRadius) * -1);
     };
 
     moveDown() {
         this.angle -= this.pace;
-        console.log(this.angle)
         this.x = gameCanvas.canvasWidth / 2 + (Math.cos(degreesToRad(this.angle)) * (fieldRadius) * +1);
         this.y = gameCanvas.canvasHeight / 2 + (Math.sin(degreesToRad(this.angle)) * (fieldRadius) * -1);
     };
-}
+
+    printScore() {
+        document.getElementById(`p2scoreNumber`).innerText = this.score
+    };
+};
 
 //  BATTLEFIELD
 function drawBattleField() {
@@ -357,13 +268,6 @@ function drawBattleField() {
     gameCanvas.ctx.closePath();
 };
 
-// function changeScore() {
-
-// };
-
-// function checkGameOver() {
-
-// };
 
 
 
@@ -375,6 +279,53 @@ const ball = new Ball(gameCanvas.canvasWidth / 2, gameCanvas.canvasHeight / 2, `
 
 
 
+function checkScore() {
+    let ballHypotP1Field = Math.hypot((gameCanvas.canvasWidth / 2 - ball.x), (ball.y - gameCanvas.canvasHeight / 2));
+    let ballHypotP2Field = Math.hypot((ball.x - gameCanvas.canvasWidth / 2), (ball.y - gameCanvas.canvasHeight / 2));
+    
+    // check if player 2 scored
+    if (ball.x < gameCanvas.canvasWidth / 2 && ballHypotP1Field > fieldRadius) {
+        console.log(`SCORE TO PLAYER 2!!`)
+        player2.score += 1;
+        player2.printScore();
+        ball.x = gameCanvas.canvasWidth / 2;
+        ball.y = gameCanvas.canvasHeight / 2;
+        ball.angle = 0;
+    };
+
+    // check if player 1 scored
+    if (ball.x > gameCanvas.canvasWidth / 2 && ballHypotP2Field > fieldRadius) {
+        console.log(`SCORE TO PLAYER 1!!`)
+        player1.score += 1;
+        player1.printScore();
+        ball.x = gameCanvas.canvasWidth / 2 ;
+        ball.y = gameCanvas.canvasHeight / 2;
+        ball.angle = 180;
+    };
+};
+
+function checkCollisions() {
+    if (ball.checkCollBallP1()) {
+        ball.changeMovementAngle(`left`);
+        ball.pace += 0.15;
+    } else if (ball.checkCollBallP2()) {
+        ball.changeMovementAngle(`right`);
+        ball.pace += 0.15;
+    };
+};
+
+function checkGameOver() {
+    if (player1.score === 3) {
+        return player1
+        // console.log(`gameover, player 1 wins!`)
+    } else if (player2.score === 3) {
+        return player2
+        // console.log(`gameover, player 2 wins!`)
+    }
+    return false;
+};
+
+
 
 ////--SHOWTIME (presentation and whats the correct order of logics to happen...)
 
@@ -384,26 +335,24 @@ function updateCanvas() {
     drawBattleField();
     player1.drawPlayer();
     player2.drawPlayer();
-    if (ball.checkCollBallP1()) {
-        ball.changeMovementAngle(`left`);
-    } else if (ball.checkCollBallP2()) {
-        ball.changeMovementAngle(`right`);
-    };
+    checkCollisions();
     ball.moveBall();
     ball.drawBall();
-    //checkScore();
-    ///check collision novo - ponto e circulo
-    ///sempre que ponto para esquerda e direita, muda angulo inicial e da um reset na bola (x e y)
-    ///se chegar num limite de score, cancelar requestframe
-    //checkGameOver();
-    requestAnimationFrame(updateCanvas);
+    checkScore();
+    const winner = checkGameOver();
+    if (!winner) {
+        requestAnimationFrame(updateCanvas);
+    } else {
+        gameCanvas.clear();
+        gameCanvas.ctx.fillText(`O ganhador foi ${winner.color}`, gameCanvas.canvasWidth / 2, gameCanvas.canvasHeight / 2, 250);
+    };
 };
 
 
 
 
 ////--CONTROLS ONLY (listeners...or what need to happen to control the "logics")
-// player1
+// players controls
 document.addEventListener(`keydown`, (e) => {
     switch (e.key) {
         case `w`: // letter `W`
@@ -432,13 +381,3 @@ document.addEventListener(`keydown`, (e) => {
             updateCanvas();
     }
 });
-
-// // ball movement
-// document.addEventListener(`keydown`, (e) => {
-//     switch (e.key) {
-//         case `Enter`: // `Enter`
-//             console.log(`MoveBall`);
-//             ball.moveBall();
-//             break;
-//     }
-// });

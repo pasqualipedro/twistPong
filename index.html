@@ -4,6 +4,7 @@
 20.06 - create file
 21.06 - adding super basic content(static)
 22.06 - More content. trying snap scroll. nok for now. will leave as is and go to JS.
+03.07 - Adjusting HTML and aesthetics
 
 -->
     <!DOCTYPE html>
@@ -23,65 +24,110 @@
 </head>
 <body>
     <!--WELCOME--> 
-         <section id="welcomePage">
-            <h1 class="serifFont">Twist</h1>
-            <h2 class="pixelFont">Pong</h2>
-            <p id="smallIntro">a classic,<br>with a humble twist.<br>enjoy it ;)</p>
-            <img src="./IMGrepo/downArrow.png" alt="arrow down"/>
-            <p class="scrollSignals">get ready<br>scroll down</p>
+         <section id="welcomePage" class="alignInY">
+            <h1 class="twistFont">Twist</h1>
+            <h2 class="pongFont">Pong</h2>
+            <p id="smallIntro" class="genFont">a classic,<br>with a humble twist.<br>enjoy it ;)</p>
+            <div class="scrollSignals alignInY">
+                <img src="./IMGrepo/downArrow.png" alt="arrow down"/>
+                <p>get ready and scroll down</p>
+            </div>
         </section>
         <hr>
     <!--GAME FORPLAY-->        
         <section id="preGame">
-            <div id="choosePlayers">
-                <div id="choosePlayer1">
-                    <h1>Player 1,<br>choose your color</h1>
-                    <button><a>Clockwork Orange</a></button>
-                    <button>Blue Lagoon</button>
-                    <button>Adidas White</button>
-                </div>
-                <div id="choosePlayer2">
-                    <h1>Player 2,<br>choose your color</h1>
-                    <button><a>Clockwork Orange</a></button>
-                    <button>Blue Lagoon</button>
-                    <button>Adidas White</button>
+            <div id="chooseColors" class="alignInY">
+                <img class="pictograms" src="./IMGrepo/palete.png" alt="choose your player colors"/>
+                <h1>1.Choose your color</h1>
+                <div id="choosePlayers" class="alignInX">
+                    <div id="Player1" class="alignInY">
+                        <h2>Player 1</h2>
+                        <div id="chooseColorP1" class="alignInY">
+                            <button><a>Clockwork Orange</a></button>
+                            <button>Blue Lagoon</button>
+                            <button>Adidas White</button>
+                        </div>
+                    </div>
+                    <div id="Player2" class="alignInY">
+                        <h2>Player 2</h2>
+                        <div id="chooseColorP2" class="alignInY">   
+                            <button><a>Clockwork Orange</a></button>
+                            <button>Blue Lagoon</button>
+                            <button>Adidas White</button>
+                        </div>     
+                    </div>
                 </div>
             </div>
-            <div id="chooseScore">
+            <hr class="breakLine2">
+            <div id="chooseScore" class="alignInY">
+                <img class="pictograms" src="./IMGrepo/limit.png" alt="choose score limit"/>
                 <h1>2.Choose the score limit</h1>
-                <img src="./IMGrepo/limit.png" alt="choose score limit"/>
-                <button>10</button>
+                <input type="number" value="0" min="0" placeholder="scoreLimitField">
+                <div id="chooseScoreFormAndText" class="alignInY">
+                </div>
             </div>
-            <div id="explainControls">
+            <hr class="breakLine2">
+            <div id="explainControls" class="alignInY">
+                <img class="pictograms" src="./IMGrepo/controls.png" alt="controls"/>
                 <h1>3.Controls</h1>
-                <img src="./IMGrepo/controls.png" alt="controls"/>
+                <div id="explainControlsDetails" class="alignInX">
+                    <div id="player1Controls" class="alignInY">
+                        <h2>Player 1</h2>
+                        <p>move up = W<br>move down = S
+                        </p>
+                    </div>
+                    <div class="alignInY">
+                        <h2>IMPORTANT !</h2>
+                        <p>1.press "START" to play<br>2.the ball speed increases<br> each bounce or score</p>
+                    </div>
+                    <div id="player2Controls" class="alignInY">
+                        <h2>Player 2</h2>
+                        <p>move up = 8<br>move down = 5</p>
+                    </div>
+                </div>
             </div>
-            <img src="./IMGrepo/play.png" alt="controls"/>
-            <p class="scrollSignals">let´s play!</p>
+            <div class="scrollSignals alignInY">
+                <img src="./IMGrepo/downArrow.png" alt="arrow down"/>
+            <p>let´s play. Keep Rollin´</p>
+            </div>
         </section>
         <hr>
     <!--GAME HERE!-->    
-        <section id="gameGame">
-            <div id="p01">
-            <h2>PLAYER<span> 01</span></h2>
-            <h2>SCORE<span id="p1scoreNumber"> 00</span></h2>
-            <button id="startGameBtn"><a>START!</a></button>
+        <section id="gameGame" class="alignInY">
+            <div class="alignInX">
+                <div id="p01">
+                    <h2>PLAYER<span> 01</span></h2>
+                    <h2>SCORE<span id="p1scoreNumber"> 00</span></h2>
+                </div>
+                <div id="canvasDiv">
+                    <canvas id="canvas" width="1300" height="850"></canvas>
+                </div>
+                <div>
+                    <h2 id="p02">PLAYER<span> 02</span></h2>
+                    <h2>SCORE<span id="p2scoreNumber"> 00</span></h2>
+                </div>
             </div>
-            <!--CANVAS HERE!-->
-            <div id="canvasDiv">
-                <canvas id="canvas" width="1300" height="850"></canvas>
-            </div>
-            <div>
-            <h2 id="p02">PLAYER<span> 02</span></h2>
-            <h2><span id="p2scoreNumber">00 </span>SCORE</h2>
-            </div>
+            <button id="startGameButton"><a>START!</a></button>
         </section>
         <hr>
     <!--ABOUT HERE!-->    
         <section id="genInfo">
-            <img src="./IMGrepo/infos.png" alt="about"/>
-            <img src="./IMGrepo/person.png" alt="author"/>
-            <img src="./IMGrepo/email.png" alt="contact via email"/>
+            <div  class="alignInXFlexStart">
+                <div>
+                    <img src="./IMGrepo/infos.png" alt="about"/>
+                    <p><span class="twistFont">Twist</span> Pong is exactly and purely what it first stated: a classic game, with a - humble - twist of my own. Originaly was planned more features, but for a matter of MVP and cronogram, some had to be cut out. I plan to add those as I gain more experience and have more time. I hope you like it ;).<br>
+                    <span class="smallLetters">Important to say here that it wasn´t intended by any way to copy any other games out there. <span class="twistFont">Twist</span> Pong was made only and purely for recreational/educational, non-commercial use</span></p>
+                </div>
+                <div>
+                    <img src="./IMGrepo/person.png" alt="author"/>
+                    <p>I´m Pedro Adri Pasquali, brazillian, architect and urbanist, have 10 years of experience in architectural offices. Since 2016, working at IKEA Portugal, Lisbon. Love bikes trips, capoeira, go out to dance, have a good laugh and friends around.<br>
+                    <span class="twistFont">Twist</span> Pong is my 1# Project as a WebDev.</p>
+                </div>
+                <div>
+                    <img src="./IMGrepo/email.png" alt="contact via email"/>
+                    <p><span id="email">email =  pasquali.pedro@gmail.com</span><br>Here is my email if you want to know more about the game or just have a chat. thanks!</p>
+                </div>
+            </div>    
         </section>
     <!--SCRIPTS GO HERE BELLOW-->
         <script src="./js/twistPongDynamics0106.js"></script>

@@ -1,0 +1,163 @@
+/* --TWIST PONG CODE--
+--Writen by Pedro Pasquali--1#Project IronHack WDPT50-SP-- */
+/* font-family: Playfair Display, serif;
+font-family: Staatliches, cursive;
+font-family: VT323, monospace; */
+
+body {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    color: white;
+    /* color: black; */
+    background-color: rgba(23, 32, 42, 1);
+    font-size: 10em;
+    font-family: Staatliches, cursive;
+}
+
+.alignInY {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.alignInX {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+} 
+
+.alignInXY {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+} 
+
+img {
+    filter: invert(1)
+}
+
+hr {
+    width: 85%;
+    margin-top: 10px;
+    margin-bottom: 10px
+}
+
+
+
+#welcomePage {
+    height: 100%;
+    width: 100%;
+    margin: .5em 0em 0em 0em;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: 255, 255, 255;
+}
+
+
+#smallIntro {
+    margin: 3em 0em 3em 0em;
+    width: 20%;
+    text-align: left;
+    color: 255, 255, 255;
+    font-family: Staatliches, cursive;
+    font-size: 0.16em;
+}
+
+.scrollSignals{
+    font-size: 0.16em;
+    margin: 0;
+}
+
+#choosePlayers {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#chooseScore {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+
+#preGame {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+}
+
+/* #startButton {
+    display: flex;
+    align-items: flex-start;
+} */
+
+
+#gameGame {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+    /*just testing bellow. easier to position..*/
+    #canvas {
+        border: 5px dotted rgb(50, 50, 50);
+}
+
+#genInfo {
+    height: 100%;
+    width: 100%;
+}
+
+
+/*---GENERAL INFO REGARDING FONTS HERE!---Justify, aligning, size, color---*/
+.pixelFont {
+    font-family: VT323, monospace;
+}
+
+.serifFont {
+    font-family: Playfair Display, serif;
+}
+
+#welcomePage h1 {
+    margin: 0;
+    color: 255, 255, 255;
+    font-size: 1em;
+}
+
+#welcomePage h2 {
+    margin: 0;
+    color: 255, 255, 255;
+    font-size: 1.5em;
+}
+
+#preGame h1 {
+    text-align: left;
+    color: 255, 255, 255;
+    font-family: Staatliches, cursive;
+    font-size: 0.16em;
+}
+
+#gameGame h2 {
+    font-size: 0.3em;
+}
+
+#p01 {
+    text-align: left;
+}
+
+#p02 {
+    text-align: right;
+}

@@ -12,6 +12,9 @@ const playersGenRadius = 30;
 const fieldRadius = 380;
 const ballTravelRadius = fieldRadius - playersGenOffset;
 const ballRadius = 15;
+let scoreLimit = 3;
+// document.getElementById(`#scoreLimit input`).innerText = scoreLimit;
+// console.log(scoreLimit);
 
 ////--LOGICS ONLY (classes, objects, functions, calculations...)
 // game area object and everything that may happen in it (methods)
@@ -315,17 +318,31 @@ function checkCollisions() {
 };
 
 function checkGameOver() {
-    if (player1.score === 3) {
+    if (player1.score === scoreLimit) {
         return player1
         // console.log(`gameover, player 1 wins!`)
-    } else if (player2.score === 3) {
+    } else if (player2.score === scoreLimit) {
         return player2
         // console.log(`gameover, player 2 wins!`)
     }
     return false;
 };
 
+function eraseScores() {
+    player2.score = 0;
+    player1.score = 0;
+}
 
+// function chooseScoreLimit(addOrSubtract) {
+//     if (addOrSubtract === `add`) {
+//         console.log(`trying to increase points`)
+//         // document.querySelector(`#scoreLimit`).innerText = scoreLimit;
+//         // scoreLimit += 1;
+//     };
+//     if (addOrSubtract === `subtract`) {
+//         console.log(`trying to DEcrease points`)
+//     }
+// };
 
 ////--SHOWTIME (presentation and whats the correct order of logics to happen...)
 
@@ -345,6 +362,7 @@ function updateCanvas() {
     } else {
         gameCanvas.clear();
         gameCanvas.ctx.fillText(`O ganhador foi ${winner.color}`, gameCanvas.canvasWidth / 2, gameCanvas.canvasHeight / 2, 250);
+        eraseScores();
     };
 };
 
@@ -355,6 +373,7 @@ function updateCanvas() {
 // players controls
 document.addEventListener(`keydown`, (e) => {
     switch (e.key) {
+            // player1
         case `w`: // letter `W`
             console.log(`P1 Up`);
             player1.moveUp();
@@ -363,11 +382,13 @@ document.addEventListener(`keydown`, (e) => {
             console.log(`P1 Down`);
             player1.moveDown();
             break;
-        case `ArrowUp`: // `Up`
+
+            // player2
+        case `8`: // `Up`
             console.log(`P2 Up`);
             player2.moveUp();
             break;
-        case `ArrowDown`: // `Down`
+        case `5`: // `Down`
             console.log(`P2 Down`);
             player2.moveDown();
             break;
@@ -375,9 +396,15 @@ document.addEventListener(`keydown`, (e) => {
 });
 
 // start button
-document.addEventListener(`keydown`, (e) => {
-    switch (e.key) {
-        case `Enter`: // `Enter` to start the game
-            updateCanvas();
-    }
-});
+window.addEventListener('load', () => {
+    const startButton = document.getElementById('startGameButton');
+    startButton.addEventListener(`click`, updateCanvas);
+  });
+
+  // score buttons
+// window.addEventListener('load', () => {
+//     const increaseLimitScoreButton = document.querySelector(`#increaseScoreButton`);
+//     const decreaseLimitScoreButton = document.querySelector(`#decreaseScoreButton`);
+//     increaseLimitScoreButton.addEventListener(`click`, chooseScoreLimit(`add`));
+//     decreaseLimitScoreButton.addEventListener(`click`, chooseScoreLimit(`subtract`));
+// });

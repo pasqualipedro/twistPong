@@ -384,11 +384,11 @@ document.addEventListener(`keydown`, (e) => {
             break;
 
             // player2
-        case `8`: // `Up`
+        case `o`: // `Up`
             console.log(`P2 Up`);
             player2.moveUp();
             break;
-        case `5`: // `Down`
+        case `l`: // `Down`
             console.log(`P2 Down`);
             player2.moveDown();
             break;

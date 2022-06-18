@@ -1,12 +1,5 @@
 <!--TWIST PONG CODE-->
 <!--Writen by Pedro Pasquali--1#Project IronHack WDPT50-SP-->
-<!--Code Diary:
-20.06 - create file
-21.06 - adding super basic content(static)
-22.06 - More content. trying snap scroll. nok for now. will leave as is and go to JS.
-03.07 - Adjusting HTML and aesthetics
-
--->
     <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -38,6 +31,7 @@
         <section id="preGame">
             <div id="chooseColors" class="alignInY">
                 <img class="pictograms" src="./IMGrepo/palete.png" alt="choose your player colors"/>
+                <!--CHOOSE COLOR-->        
                 <h1>1.Choose your color</h1>
                 <div id="choosePlayers" class="alignInX">
                     <div id="Player1" class="alignInY">
@@ -61,6 +55,7 @@
             <hr class="breakLine2">
             <div id="chooseScore" class="alignInY">
                 <img class="pictograms" src="./IMGrepo/limit.png" alt="choose score limit"/>
+                <!--CHOOSE SCORE-->        
                 <h1>2.Choose the score limit</h1>
                 <input type="number" value="0" min="0" placeholder="scoreLimitField">
                 <div id="chooseScoreFormAndText" class="alignInY">
@@ -69,6 +64,7 @@
             <hr class="breakLine2">
             <div id="explainControls" class="alignInY">
                 <img class="pictograms" src="./IMGrepo/controls.png" alt="controls"/>
+                <!--EXPLAINING CONTROLS-->        
                 <h1>3.Controls</h1>
                 <div id="explainControlsDetails" class="alignInX">
                     <div id="player1Controls" class="alignInY">
@@ -92,7 +88,7 @@
             </div>
         </section>
         <hr>
-    <!--GAME HERE!-->    
+    <!--GAME CANVAS HERE!-->    
         <section id="gameGame" class="alignInY">
             <div class="alignInX">
                 <div id="p01">
@@ -130,7 +126,7 @@
             </div>    
         </section>
     <!--SCRIPTS GO HERE BELLOW-->
-        <script src="./js/twistPongDynamics0106.js"></script>
+        <script src="./js/twistPongDynamics.js"></script>
 </body>
 </html>
 

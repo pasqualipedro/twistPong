@@ -29,13 +29,13 @@ After a Game Over, press start and play again.
 The files structure were based on HTML + CSS + JAVASCRIPT
 
 ## . future improvements
-BUG solving
-develop a responsive and mobile version
-players shapes may change and affect how the ball is bounced back
-real physics for ball (mass, velocity, acceleration, inertia etc...)
-rotating battlefield
-"powers" that players can use to increase temporary difficulty over opponent
-add more juice visually
-add music and sound effects
-score table for different players filtered my maximum score?
-online gaming
+- BUG solving
+- Develop a responsive and mobile version
+- Change the shapes of the players
+- Apply real physics calculations 
+- A rotating battlefiel
+- Powers that players can use to thei advantage or to mess the opponent game :) 
+- Add more juice vissually
+- Add music and sound effects
+- score table for different players
+- online gaming
